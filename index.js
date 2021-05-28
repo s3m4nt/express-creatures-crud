@@ -27,16 +27,19 @@ app.get('/dinosaurs', (req, res) => {
   res.json({ dinoData })
 })
 
-// POST /dinosaurs -- CREATE new dinos - redirect to /dinosaurs
+// POST /dinosaurs -- CREATE a new dino -- redirect to /dinosaurs
 app.post('/dinosaurs', (req, res) => {
-  // Read dino file
+  // read dino file
   const dinosaurs = fs.readFileSync('./dinosaurs.json')
   const dinoData = JSON.parse(dinosaurs)
+
   console.log(req.body)
-  // Add data from the request body to the dino.json
-  fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinoData))
-  // Write the file
+  // add data from the request body to the dino data
   dinoData.push(req.body)
+
+  // write the file
+  fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinoData))
+
   // redirect to /dinosaurs
   res.redirect('/dinosaurs')
 })
@@ -57,10 +60,38 @@ app.get('/dinosaurs/:id', (req, res) => {
   res.json({ dino })
 })
 
+app.get('dinosaurs/edit/:id', (req, res) => {
+  res.json({ msg: `show formm to edit dino ${req.params.id}` })
+})
+
 // PUT /dinsosaurs/:id -- update (edit) one dino -- redirect to /dinosaurs
+app.put('/dinosaurs/:id', (req, res) => {
+  // get dino data from our json
+  const dinosaurs = fs.readFileSync('./dinosaurs.json')
+  const dinoData = JSON.parse(dinosaurs)
+  // get dino data form the req.params.id and use the req.body to update
+  dinoData[req.params.id].name = req.body.name
+  dinoData[req.params.id].type = req.body.type
+
+  // write the json file
+  fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinoData))
+
+  // redirect to /dinosaurs
+  res.redirect('/dinosaurs')
+})
 
 // DELETE /dinosaur/:id -- destroy one specific dino
-
+app.delete('/dinosaurs/:id', (req, res) => {
+  // get our dino json
+  const dinosaurs = fs.readFileSync('./dinosaurs.json')
+  const dinoData = JSON.parse(dinosaurs)
+  // remove one dino from the array
+  dinoData.splice(req.params.id, 1)
+  // save dinosaur .json
+  fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinoData))
+  // redirect to /dinosaurs
+  res.redirect('/dinosaurs')
+})
 //
 // List on port
 app.listen(PORT, () => {
