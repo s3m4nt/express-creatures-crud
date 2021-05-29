@@ -3,16 +3,22 @@ const express = require('express')
 // rowdy logger for logging our routes
 rowdy = require('rowdy-logger')
 const fs = require('fs')
-
+const layouts = require('express-ejs-layouts')
+const methodOverride = require('method-override')
 // Config app
 const app = express()
 const rowdyResults = rowdy.begin(app)
 const PORT = 3000
+app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
+app.use(express.static(__dirname + '/public'))
+app.use(layouts)
+// method override so we can put and delete
+app.use(methodOverride('_method'))
 
 // Define routes
 app.get('/', (req, res) => {
-  res.json({ msg: 'Hello, Dinos 🦕' })
+  res.render('home')
 })
 
 // Stub out my routes
@@ -24,7 +30,7 @@ app.get('/dinosaurs', (req, res) => {
   const dinoData = JSON.parse(dinosaurs)
   console.log(dinoData)
   // send back the json to Postman
-  res.json({ dinoData })
+  res.render('dinosaurs/index.ejs', { dinoData: dinoData })
 })
 
 // POST /dinosaurs -- CREATE a new dino -- redirect to /dinosaurs
@@ -46,7 +52,7 @@ app.post('/dinosaurs', (req, res) => {
 
 // GET /dinosaurs/new -- READ (show) a form to edit one dino
 app.get('/dinosaurs/new', (req, res) => {
-  res.json({ msg: 'Show form to add a dino' })
+  res.render('dinosaurs/new.ejs')
 })
 
 // GET /dinosaurs/:id -- READ one specific dino // GET /dinosaurs/new -- READ (show) a form to add a dino
@@ -61,7 +67,13 @@ app.get('/dinosaurs/:id', (req, res) => {
 })
 
 app.get('dinosaurs/edit/:id', (req, res) => {
-  res.json({ msg: `show formm to edit dino ${req.params.id}` })
+  //   res.json({ msg: `show formm to edit dino ${req.params.id}` })
+  // get the dino info to populate the form
+  const dinosaurs = fs.readFileSync('./dinosaurs.json')
+  const dinoData = JSON.parse(dinosaurs)
+
+  const dino = dino.data[req.params.id]
+  res.render('dinosaurs/edit.ejs'), { dino: dino }
 })
 
 // PUT /dinsosaurs/:id -- update (edit) one dino -- redirect to /dinosaurs
