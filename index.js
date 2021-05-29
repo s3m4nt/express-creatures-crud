@@ -10,7 +10,7 @@ const app = express()
 const rowdyResults = rowdy.begin(app)
 const PORT = 3000
 app.set('view engine', 'ejs')
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static(__dirname + '/public'))
 app.use(layouts)
 // method override so we can put and delete
@@ -66,18 +66,20 @@ app.get('/dinosaurs/:id', (req, res) => {
   res.json({ dino })
 })
 
-app.get('dinosaurs/edit/:id', (req, res) => {
-  //   res.json({ msg: `show formm to edit dino ${req.params.id}` })
+// GET /dinosaurs/edit/:id -- READ (show) form to edit one dino
+app.get('/dinosaurs/edit/:id', (req, res) => {
   // get the dino info to populate the form
   const dinosaurs = fs.readFileSync('./dinosaurs.json')
   const dinoData = JSON.parse(dinosaurs)
-
-  const dino = dino.data[req.params.id]
-  res.render('dinosaurs/edit.ejs'), { dino: dino }
+  const dino = dinoData[req.params.id]
+  console.log(dino)
+  // render the template
+  res.render('dinosaurs/edit.ejs', { dino: dino, dinoId: req.params.id })
 })
 
 // PUT /dinsosaurs/:id -- update (edit) one dino -- redirect to /dinosaurs
 app.put('/dinosaurs/:id', (req, res) => {
+  console.log(req.body)
   // get dino data from our json
   const dinosaurs = fs.readFileSync('./dinosaurs.json')
   const dinoData = JSON.parse(dinosaurs)
