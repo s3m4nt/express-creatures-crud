@@ -11,12 +11,13 @@ const rowdyResults = rowdy.begin(app)
 const PORT = 3000
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
+// Site starts at /public ->
 app.use(express.static(__dirname + '/public'))
 app.use(layouts)
 // method override so we can put and delete
 app.use(methodOverride('_method'))
 
-// Define routes
+// Define routes or 'stubbing' routes
 app.get('/', (req, res) => {
   res.render('home')
 })
