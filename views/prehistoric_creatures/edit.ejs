@@ -1,8 +1,11 @@
-<h2>Edit an existing dinosaur</h2>
-<form method="POST" action="/dinosaurs/<%= dinoId %>/?_method=PUT">
+<h2>Edit an existing Prehistoric Creature</h2>
+<form
+  method="POST"
+  action="/prehistoric_creatures/<%= prehistoric_creaturesId %>/?_method=PUT"
+>
   <label>Name</label>
-  <input type="text" value="<%= dino.name %>" name="name" />
+  <input type="text" value="<%= prehistoric_creatures.name %>" name="name" />
   <label>Type</label>
-  <input type="text" value="<%= dino.type %>" name="type" />
+  <input type="text" value="<%= prehistoric_creatures.type %>" name="type" />
   <input type="submit" />
 </form>

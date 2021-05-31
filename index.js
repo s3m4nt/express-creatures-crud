@@ -25,15 +25,28 @@ app.get('/', (req, res) => {
 
 // Stub out my routes
 // GET /dinosaurs -- read all dinos
-// app.get('/dinosaurs', (req, res) => {
-//   // read the dinosaurs.json
-//   const dinosaurs = fs.readFileSync('./dinosaurs.json')
-//   // parsed the json buffer to clean it up! -
-//   const dinoData = JSON.parse(dinosaurs)
-//   console.log(dinoData)
-//   // send back the json to Postman
-//   res.render('dinosaurs/index.ejs', { dinoData: dinoData })
-// })
+app.get('/dinosaurs', (req, res) => {
+  // read the dinosaurs.json
+  const dinosaurs = fs.readFileSync('./dinosaurs.json')
+  // parsed the json buffer to clean it up! -
+  const dinoData = JSON.parse(dinosaurs)
+  console.log(dinoData)
+  // send back the json to Postman
+  res.render('dinosaurs/index.ejs', { dinoData: dinoData })
+})
+
+// GET /prehistoric_creatures -- read all dinos
+app.get('/prehistoric_creatures', (req, res) => {
+  // read the dinosaurs.json
+  const prehistoric_creatures = fs.readFileSync('./prehistoric_creatures.json')
+  // parsed the json buffer to clean it up! -
+  const prehistoric_creaturesData = JSON.parse(prehistoric_creatures)
+  console.log(prehistoric_creaturesData)
+  // send back the json to Postman
+  res.render('prehistoric_creatures/index.ejs', {
+    prehistoric_creaturesData: prehistoric_creaturesData,
+  })
+})
 
 // POST /dinosaurs -- CREATE a new dino -- redirect to /dinosaurs
 app.post('/dinosaurs', (req, res) => {

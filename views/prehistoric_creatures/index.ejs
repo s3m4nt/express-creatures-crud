@@ -1,9 +1,16 @@
 <ul>
-  <% dinoData.forEach((dino, index) =>{ %>
+  <% prehistoric_creaturesData.forEach((prehistoric_creature, index) =>{ %>
   <li>
-    <%= dino.name %> is a <%= dino.type %>
-
-    <a class="edit" href="/dinosaurs/edit/<%= index %>"> ... Edit Dino</a>
+    <%= prehistoric_creature.type %> <br />
+    <img
+      class="prehistoric_creaturesIMG"
+      src="<%= prehistoric_creature.img_url %>"
+    />
+    <br />
+    <a class="edit" href="/prehistoric_creatures/edit/<%= index %>">
+      ... Edit <%= prehistoric_creature.type %></a
+    >
+    <hr />
   </li>
   <% }) %>
 </ul>

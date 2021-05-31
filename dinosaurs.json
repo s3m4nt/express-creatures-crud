@@ -1,9 +1,1 @@
-[
-  { "name": "Barney Smith", "type": "Purpleasaurus" },
-  { "name": "Cera", "type": "triceratops" },
-  { "name": "Ducky", "type": "saurolophus" },
-  { "name": "Petrie", "type": "pteranodon" },
-  { "name": "Spike", "type": "stegosaurus" },
-  { "type": "dogasaurus", "name": "Jackanodon" },
-  { "type": "Apatosaurus", "name": "Mike" }
-]
+[{"name":"Cera","type":"triceratops"},{"name":"Ducky","type":"saurolophus"},{"name":"Petrie","type":"pteranodon"},{"name":"Spike","type":"stegosaurus"},{"type":"Apatosaurus","name":"Mike"},{"type":"Apatosaurus","name":"Phillip JR"}]
