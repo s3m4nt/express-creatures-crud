@@ -8,15 +8,30 @@
     <link href="/styles.css" rel="stylesheet" />
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="/">DINO HOME</a></li>
-        <li><a href="/dinosaurs">DINOS</a></li>
-        <li><a href="/dinosaurs/new">NEW DINOS</a></li>
-      </ul>
-    </nav>
-    <h1>🦕 I LOVE DINOS! 🦕</h1>
+    <div class="wrapper">
+      <nav class="header">
+        <h1>🦕 I LOVE CREATURES! 🐢</h1>
+        <hr />
+        <a href="/">CREATURES HOME</a>
 
-    <%- body %>
+        <ul>
+          <!-- <li><a href="/">DINO HOME</a></li> -->
+          <li><a href="/dinosaurs">DINOS</a></li>
+          <li><a href="/dinosaurs/new">CREATE NEW DINOS</a></li>
+        </ul>
+
+        <ul>
+          <!-- <li><a href="/">PREHISTORIC CREATURES HOME</a></li> -->
+          <li><a href="/prehistoric_creatures">PREHISTORIC CREATURES</a></li>
+          <li>
+            <a href="/prehistoric_creatures/new"
+              >CREATE NEW PREHISTORIC CREATURES</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <%- body %>
+    </div>
   </body>
 </html>

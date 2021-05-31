@@ -18,21 +18,22 @@ app.use(layouts)
 app.use(methodOverride('_method'))
 
 // Define routes or 'stubbing' routes
+// HOME route
 app.get('/', (req, res) => {
   res.render('home')
 })
 
 // Stub out my routes
 // GET /dinosaurs -- read all dinos
-app.get('/dinosaurs', (req, res) => {
-  // read the dinosaurs.json
-  const dinosaurs = fs.readFileSync('./dinosaurs.json')
-  // parsed the json buffer to clean it up! -
-  const dinoData = JSON.parse(dinosaurs)
-  console.log(dinoData)
-  // send back the json to Postman
-  res.render('dinosaurs/index.ejs', { dinoData: dinoData })
-})
+// app.get('/dinosaurs', (req, res) => {
+//   // read the dinosaurs.json
+//   const dinosaurs = fs.readFileSync('./dinosaurs.json')
+//   // parsed the json buffer to clean it up! -
+//   const dinoData = JSON.parse(dinosaurs)
+//   console.log(dinoData)
+//   // send back the json to Postman
+//   res.render('dinosaurs/index.ejs', { dinoData: dinoData })
+// })
 
 // POST /dinosaurs -- CREATE a new dino -- redirect to /dinosaurs
 app.post('/dinosaurs', (req, res) => {
