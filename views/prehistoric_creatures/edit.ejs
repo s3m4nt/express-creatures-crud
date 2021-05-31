@@ -3,9 +3,10 @@
   method="POST"
   action="/prehistoric_creatures/<%= prehistoric_creaturesId %>/?_method=PUT"
 >
-  <label>Name</label>
-  <input type="text" value="<%= prehistoric_creatures.name %>" name="name" />
-  <label>Type</label>
-  <input type="text" value="<%= prehistoric_creatures.type %>" name="type" />
+  <label>Type: </label>
+  <input type="text" value="<%= preHC.type %>" name="type" />
+  <br />
+  <label>Image URL: </label>
+  <input type="text" value="<%= preHC.img_url %>" name="img_url" />
   <input type="submit" />
 </form>
