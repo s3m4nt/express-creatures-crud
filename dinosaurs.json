@@ -1,5 +1,8 @@
-<<<<<<< HEAD
-[{"name":"Barney","type":"purpleasaurusrex"},{"name":"Cera","type":"triceratops"},{"name":"Ducky","type":"saurolophus"},{"name":"Petrie","type":"pteranodon"},{"name":"Spike","type":"stegosaurus"},{"type":"newDinoSaurus","name":"FNG"},{"type":"dogasaurus","name":"Jackanodon"},{"type":"Stegaaaaasaurus","name":"Mike"},{"type":"brontosaurus","name":"ScaleyGuy"},{"type":"qwee232323eqweqwe","name":"werwe"}]
-=======
-[{"name":"Cera","type":"triceratops"},{"name":"Ducky","type":"saurolophus"},{"name":"Petrie","type":"pteranodon"},{"name":"Spike","type":"stegosaurus"},{"type":"Apatosaurus","name":"Mike"},{"type":"Apatosaurus","name":"Phillip JR"}]
->>>>>>> 0b1b729
+[
+  { "name": "Cera", "type": "triceratops" },
+  { "name": "Ducky", "type": "saurolophus" },
+  { "name": "Petrie", "type": "pteranodon" },
+  { "name": "Spike", "type": "stegosaurus" },
+  { "type": "Apatosaurus", "name": "Mike" },
+  { "type": "Apatosaurus", "name": "Phillip JR" }
+]
