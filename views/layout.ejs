@@ -8,6 +8,7 @@
     <link href="/styles.css" rel="stylesheet" />
   </head>
   <body>
+<<<<<<< HEAD
     <h1>🦕 I LOVE CREATURES! 🦕</h1>
     <nav>
       <ul>
@@ -25,7 +26,32 @@
         </li>
       </ul>
     </nav>
+=======
+    <div class="wrapper">
+      <nav class="header">
+        <h1>🦕 I LOVE CREATURES! 🐢</h1>
+        <hr />
+        <a href="/">CREATURES HOME</a>
+>>>>>>> 0b1b729
 
-    <%- body %>
+        <ul>
+          <!-- <li><a href="/">DINO HOME</a></li> -->
+          <li><a href="/dinosaurs">DINOS</a></li>
+          <li><a href="/dinosaurs/new">CREATE NEW DINOS</a></li>
+        </ul>
+
+        <ul>
+          <!-- <li><a href="/">PREHISTORIC CREATURES HOME</a></li> -->
+          <li><a href="/prehistoric_creatures">PREHISTORIC CREATURES</a></li>
+          <li>
+            <a href="/prehistoric_creatures/new"
+              >CREATE A NEW PREHISTORIC CREATURE</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <%- body %>
+    </div>
   </body>
 </html>
