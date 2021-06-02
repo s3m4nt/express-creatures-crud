@@ -9,7 +9,7 @@ router.get('/prehistoric_creatures', (req, res) => {
   const prehistoric_creatures = fs.readFileSync('./prehistoric_creatures.json')
   // parsed the json buffer to clean it up! -
   const prehistoric_creaturesData = JSON.parse(prehistoric_creatures)
-  console.log(prehistoric_creaturesData)
+  // console.log(prehistoric_creaturesData)
   // send back the json to Postman
   res.render('prehistoric_creatures/index.ejs', {
     prehistoric_creaturesData: prehistoric_creaturesData,
@@ -22,7 +22,7 @@ router.get('/prehistoric_creatures/edit/:id', (req, res) => {
   const prehistoric_creatures = fs.readFileSync('./prehistoric_creatures.json')
   const prehistoric_creaturesData = JSON.parse(prehistoric_creatures)
   const preHC = prehistoric_creaturesData[req.params.id]
-  console.log(preHC)
+  // console.log(preHC)
   // render the template
   res.render('prehistoric_creatures/edit.ejs', {
     preHC: preHC,
@@ -60,7 +60,7 @@ router.post('/prehistoric_creatures', (req, res) => {
   const prehistoric_creatures = fs.readFileSync('./prehistoric_creatures.json')
   const prehistoric_creaturesData = JSON.parse(prehistoric_creatures)
 
-  console.log(req.body)
+  // console.log(req.body)
   // add data from the request body to prehistoric_creaturesData
   prehistoric_creaturesData.push(req.body)
 

@@ -12,7 +12,7 @@ router.get('/dinosaurs', (req, res) => {
   const dinosaurs = fs.readFileSync('./dinosaurs.json')
   // parsed the json buffer to clean it up! -
   const dinoData = JSON.parse(dinosaurs)
-  console.log(dinoData)
+  // console.log(dinoData)
   // send back the json to Postman
   res.render('dinosaurs/index.ejs', { dinoData: dinoData })
 })
@@ -56,14 +56,14 @@ router.get('/dinosaurs/edit/:id', (req, res) => {
   const dinosaurs = fs.readFileSync('./dinosaurs.json')
   const dinoData = JSON.parse(dinosaurs)
   const dino = dinoData[req.params.id]
-  console.log(dino)
+  // console.log(dino)
   // render the template
   res.render('dinosaurs/edit.ejs', { dino: dino, dinoId: req.params.id })
 })
 
 // PUT /dinsosaurs/:id -- update (edit) one dino -- redirect to /dinosaurs
 router.put('/dinosaurs/:id', (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   // get dino data from our json
   const dinosaurs = fs.readFileSync('./dinosaurs.json')
   const dinoData = JSON.parse(dinosaurs)
@@ -78,17 +78,21 @@ router.put('/dinosaurs/:id', (req, res) => {
   res.redirect('/dinosaurs')
 })
 
-// DELETE /dinosaur/:id -- destroy one specific dino
+// DELETE /dinosaur/:id -- DESTROY one specific dino
 router.delete('/dinosaurs/:id', (req, res) => {
   // get our dino json
   const dinosaurs = fs.readFileSync('./dinosaurs.json')
   const dinoData = JSON.parse(dinosaurs)
-  // remove one dino from the array
+
+  // remove one dino from the array -- use req.params
   dinoData.splice(req.params.id, 1)
-  // save dinosaur .json
+
+  // save dinosaurs.json
   fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinoData))
+
   // redirect to /dinosaurs
   res.redirect('/dinosaurs')
 })
 
+//
 module.exports = router
